@@ -3,7 +3,7 @@
 ## Built With
 
 This version uses React, Redux, Express, Passport, and PostgreSQL.  
-Additional Technologies listed below (see "Additional Technologies Used"), and a full list of dependencies can be found in `package.json`.
+A full list of dependencies can be found in `package.json`.
 
 ## Getting Started
 
