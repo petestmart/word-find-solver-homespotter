@@ -17,7 +17,6 @@ import './WordFind.css'
 class WordFind extends Component {
 
     state = {
-        displayPuzzle: false,
         puzzleInput: 'initial',
     }
 
@@ -98,14 +97,14 @@ class WordFind extends Component {
                 }
             }
         }
-        // this.setState({ displayPuzzle: true, });
+        
         // adding the array of vertical words to the matrix array
         for (let n = 0; n < vertMatrix.length; n++) {
 
             matrix.push(vertMatrix[n])
         }
         this.wordCheck(matrix);
-        // this.wordCheck(vertMatrix);
+        
     } // end function puzzleDisplay
 
     switch() {
@@ -117,7 +116,7 @@ class WordFind extends Component {
         console.log('matrix', matrix);
         let arrayOfWords = this.props.reduxState.dictionaryReducer;
         // let arrayOfWords = ['gas', 'sag', 'broker', 'ripe', 'bleu', 'boy', 'wood', 'garage', 'razor', 'home', 'mark', 'cow', 'kite', 'balloon', 'mouse'];
-        // let arrayOfWords = dictionary;
+        
         console.log('arrayOfWords', arrayOfWords)
         let wordsMatch = [];
         // expect 10 words found
@@ -142,7 +141,7 @@ class WordFind extends Component {
                     console.log('j loop#', j, 'c');
                     console.log('loop match:', matrixString.match(arrayOfWords[j]));
                     console.log('wordsMatch', wordsMatch);
-                    // this.setState({ ...this.state.wordsMatch, wordsMatch });
+                    
                 }
                 if (stringReverse.match(arrayOfWords[j])) {
                     let match = arrayOfWords[j];
@@ -151,8 +150,6 @@ class WordFind extends Component {
                     console.log('i loop#', i, 'd');
                     console.log('j loop#', j, 'e');
                     console.log('reverse loop match', stringReverse.match(arrayOfWords[j]));
-                    // this.setState({ ...this.state.wordsMatch, wordsMatch: match });
-                    // console.log('state', this.state);
                 }
             }
             console.log('_________________________________________');
@@ -161,9 +158,7 @@ class WordFind extends Component {
         this.props.dispatch({ type: 'STORE_WORDS', payload: wordsMatch })
     }// end function wordCheck
 
-    // sendToRedux(wordsMatch){
-    //     this.props.dispatch({ type: 'STORE_WORDS', payload: wordsMatch })
-    // }
+
 
     render() {
 
@@ -171,51 +166,28 @@ class WordFind extends Component {
         let puzzleData = this.state.puzzleInput;
         let puzzle = puzzleData.split(' ');
 
+        return (
+            <p>
+                <TextField
+                    onChange={this.handleChange}
+                    id="word-find-input"
+                    label="Enter Word Find Input"
+                    multiline
+                    rows="4"
+                    margin="normal"
+                />
+                <Button
+                    onClick={() => this.puzzleDisplay(puzzle)}
+                    variant="contained"
+                >Find Words</Button>
 
 
-        if (this.state.displayPuzzle === false) {
-            return (
-                <p>
-                    <TextField
-                        onChange={this.handleChange}
-                        id="word-find-input"
-                        label="Enter Word Find Input"
-                        multiline
-                        rows="4"
-                        margin="normal"
-                    />
-                    <Button
-                        onClick={() => this.puzzleDisplay(puzzle)}
-                        variant="contained"
-                    >Find Words</Button>
-                    {/* <Button
-                        onClick={() => this.sendToRedux()}
-                    >Redux Button</Button> */}
-                    {/* {puzzle} */}
+                <WordOutput
+                    puzzle={puzzleData}
+                />
 
-                    <WordOutput
-                        puzzle={puzzleData}
-                    />
-
-                </p>
-            )
-        }
-        // else {
-        //     return (
-        //         <p>
-        //             <Button
-        //                 onClick={() => this.switch()}
-        //             >Hide</Button>
-        //             {this.puzzleDom}
-        //             {/* {puzzle} */}
-        //             <WordOutput
-        //                 puzzle={puzzleData}
-        //             />
-
-        //         </p>
-
-        //     )
-        // }
+            </p>
+        )
     }
 }
 

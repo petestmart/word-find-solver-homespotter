@@ -30,7 +30,6 @@ class WordOutput extends Component {
     renderWords = () => {
 
         console.log('renderWords reduxState', this.props.reduxState)
-        // console.log('renderWords wordReducer', this.props.reduxState.wordReducer[0])
         console.log('renderWords wordReducer', this.props.reduxState.wordReducer)
 
 
@@ -40,7 +39,7 @@ class WordOutput extends Component {
     }
 
     render() {
-        // console.log('this.props.reduxState.foundNames', this.props.reduxState.foundNames)
+        
         let puzzle = this.props.puzzle.split(' ');
         let testWords;
         let searchTerm = 'A';
@@ -52,16 +51,7 @@ class WordOutput extends Component {
                 <li>{letter}</li>
             )
 
-            // if (letter === searchTerm){
-            //     return (
-            //         <li>{letter}</li>
-            //     )
-            // }
-            // else {
-            //     return (
-            //         <li>.</li>
-            //     )
-            // }
+            
 
         });
 
@@ -71,25 +61,7 @@ class WordOutput extends Component {
             )
         });
 
-        // conditionalFoundNames = () => {
-        //     return (
-        //         (this.props.reduxState.foundNames.length > 0) ?
-        //             this.renderWords() :
-        //             <div></div>
-        //     )
-        // }
-
-        // renderWords = () => {
-        //     return (
-        //         this.props.reduxState.foundNames
-        //     )
-        // }
-
-
-
-        // let PuzzleOut = puzzle.join('').includes(searchTerm);
-
-        // let PuzzleOut = 
+        
 
         return (
 
@@ -98,8 +70,7 @@ class WordOutput extends Component {
 
                 <ul>{wordOut}</ul>
                 {this.conditionalFoundNames}
-                {/* <ul>{PuzzleGrid}</ul> */}
-                {/* <ul>{PuzzleOut}</ul> */}
+                
 
             </div>
         )
