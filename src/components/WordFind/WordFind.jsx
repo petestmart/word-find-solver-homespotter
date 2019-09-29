@@ -58,6 +58,8 @@ class WordFind extends Component {
                     input[i] = input[k]
                     input[j] = input[k]
                     
+                    // Counting columns for vertical matrix.
+                    // Resets at the end of every row and starts over.
                     if (m === column) {
                         console.log('reset');
                         m = 0;
@@ -149,8 +151,7 @@ class WordFind extends Component {
                     console.log('i loop#', i, 'd');
                     console.log('j loop#', j, 'e');
                     console.log('reverse loop match', stringReverse.match(arrayOfWords[j]));
-                    // this.setState({ ...this.state.wordsMatch, wordsMatch: match });
-                    // console.log('state', this.state);
+                    
                 }
             }
             console.log('_________________________________________');
@@ -159,9 +160,7 @@ class WordFind extends Component {
         this.props.dispatch({ type: 'STORE_WORDS', payload: wordsMatch })
     }// end function wordCheck
 
-    // sendToRedux(wordsMatch){
-    //     this.props.dispatch({ type: 'STORE_WORDS', payload: wordsMatch })
-    // }
+    
 
     render() {
 
@@ -186,10 +185,7 @@ class WordFind extends Component {
                         onClick={() => this.puzzleDisplay(puzzle)}
                         variant="contained"
                     >Find Words</Button>
-                    {/* <Button
-                        onClick={() => this.sendToRedux()}
-                    >Redux Button</Button> */}
-                    {/* {puzzle} */}
+                    
                     
                     <WordOutput
                         puzzle={puzzleData}
