@@ -104,7 +104,8 @@ class WordFind extends Component {
             matrix.push(vertMatrix[n])
         }
         this.wordCheck(matrix);
-        
+        this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: ['broker'] })
+        this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: [1,2,3] })
     } // end function puzzleDisplay
 
     
