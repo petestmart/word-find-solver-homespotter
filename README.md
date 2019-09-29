@@ -37,11 +37,11 @@ As of the time of this submission, the application will only check for words tha
 ### Next Steps
 * Remove console logs
 * Clean up layout
-** Position of "Find Words" button is awkwardly placed. Use MUI grid to reposition and make responsive
+    * Position of "Find Words" button is awkwardly placed. Use MUI grid to reposition and make responsive
 * Design
-** Color Buttons
-** Add color to Page
-** Different color header (possibly add an app bar)
+    * Color Buttons
+    * Add color to Page
+    * Different color header (possibly add an app bar)
 * Display user submitted puzzle
-** When user submits a word find, have the word find display on the DOM
-** Highlight words in wordfind when user hovers over the word in the found words list
+    * When user submits a word find, have the word find display on the DOM
+    * Highlight words in wordfind when user hovers over the word in the found words list
