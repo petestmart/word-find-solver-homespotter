@@ -17,7 +17,6 @@ import './WordFind.css'
 class WordFind extends Component {
 
     state = {
-        displayPuzzle: false,
         puzzleInput: 'initial',
     }
 
@@ -110,9 +109,7 @@ class WordFind extends Component {
         // this.wordCheck(vertMatrix);
     } // end function puzzleDisplay
 
-    switch() {
-        this.setState({ displayPuzzle: false, })
-    }
+    
 
     // check to see if word is in matrix
     wordCheck(matrix) {
@@ -142,7 +139,7 @@ class WordFind extends Component {
                     console.log('j loop#', j, 'c');
                     console.log('loop match:', matrixString.match(arrayOfWords[j]));
                     console.log('wordsMatch', wordsMatch);
-                    // this.setState({ ...this.state.wordsMatch, wordsMatch });
+                    
                 }
                 if (stringReverse.match(arrayOfWords[j])) {
                     let match = arrayOfWords[j];
@@ -168,9 +165,6 @@ class WordFind extends Component {
         let puzzleData = this.state.puzzleInput;
         let puzzle = puzzleData.split(' ');
 
-
-
-        if (this.state.displayPuzzle === false) {
             return (
                 <p>
                     <TextField
@@ -193,23 +187,7 @@ class WordFind extends Component {
 
                 </p>
             )
-        }
-        // else {
-        //     return (
-        //         <p>
-        //             <Button
-        //                 onClick={() => this.switch()}
-        //             >Hide</Button>
-        //             {this.puzzleDom}
-        //             {/* {puzzle} */}
-        //             <WordOutput
-        //                 puzzle={puzzleData}
-        //             />
-
-        //         </p>
-
-        //     )
-        // }
+        
     }
 }
 
