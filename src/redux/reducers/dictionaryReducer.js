@@ -2,7 +2,7 @@
 const dictionaryReducer = (state = [], action) => {
     console.log('dictionaryReducer', action.payload);
     if (action.type === 'SET_DICTIONARY'){
-        return [action.payload]
+        return action.payload
     }
 
     return state
