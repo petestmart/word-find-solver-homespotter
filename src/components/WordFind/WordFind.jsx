@@ -107,9 +107,7 @@ class WordFind extends Component {
         
     } // end function puzzleDisplay
 
-    switch() {
-        this.setState({ displayPuzzle: false, })
-    }
+    
 
     // check to see if word is in matrix
     wordCheck(matrix) {
@@ -119,7 +117,7 @@ class WordFind extends Component {
         
         console.log('arrayOfWords', arrayOfWords)
         let wordsMatch = [];
-        // expect 10 words found
+        // expect 7 words found from test array
         for (let i = 0; i < matrix.length; i++) {
             let matrixString = matrix[i].join('');
             console.log('matrixString[i]', matrixString);

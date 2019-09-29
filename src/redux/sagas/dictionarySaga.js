@@ -1,6 +1,14 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
+// Send Matrix of letters to server to check dictionary
+// function* postDictionary(action){
+//     console.log('in postDictionary')
+//     try {
+//         const 
+//     }
+// }
+
 // Send GET request for words from the dictionary
 function* getDictionary(action) {
     console.log('in getDictionary');
