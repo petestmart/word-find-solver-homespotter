@@ -29,10 +29,15 @@ Before you get started, make sure you have the following software installed on y
 * Will handle arbitrarily sized puzzle inputs
 * The solution does print out the list of found words
 
-### Notes
-As of the this commit, the application will check for words found in any size word find. The words will print to the DOM.  However, there is a bug where there must be a space between every word in the word find.
+
+### Bugs To Fix
+* Duplicate words print to DOM
+* 
 
 ### Next Steps
+* Bonus Mode: Only the longest valid word in a sequence of letters:
+    * Don't return "broke" and "broker": only "broker"
+    * Don’t return “hard” and “wood”; only “hardwood”
 * Remove console logs
 * Clean up layout
     * Position of "Find Words" button is awkwardly placed. Use MUI grid to reposition and make responsive

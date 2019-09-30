@@ -69,16 +69,7 @@ class WordOutput extends Component {
         });
 
         if (dictionaryReducer.length != 0) {
-            // console.log('dictionaryReducer', dictionaryReducer)
-            // for (let i=0; i<dictionaryReducer.length; i++){
-            //     for (let j=0; i<dictionaryReducer.length; j++){
-            //         if (dictionaryReducer[j].length > 4) {
-            //             longWords.push(dictionaryReducer[i])
-            //         }
-            //         console.log('longWords', longWords)
-            //     }
-                
-            // }
+            
             if (dictionaryReducer.length != 0){
                 wordOut = dictionaryReducer.map((word, i) => {
                     if (word != "" && word != null && word.length > 3){
@@ -97,17 +88,9 @@ class WordOutput extends Component {
             )
         }
 
-
-
-
         return (
-
-
             <div>
-
                 <ul>{wordOut}</ul>
-                {/* <ul>{this.conditionalFoundNames}</ul> */}
-
             </div>
         )
     }
