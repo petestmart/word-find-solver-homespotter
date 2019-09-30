@@ -17,7 +17,7 @@ import './WordFind.css'
 class WordFind extends Component {
 
     state = {
-        puzzleInput: 'initial',
+        puzzleInput: '',
     }
 
     wordsMatch;
@@ -103,64 +103,13 @@ class WordFind extends Component {
 
             matrix.push(vertMatrix[n])
         }
-        this.wordCheck(matrix);
         this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: matrix })
-        // this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: ['broker'] })
-        // this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: [1,2,3] })
     } // end function puzzleDisplay
 
     
 
-    // check to see if word is in matrix
-    wordCheck(matrix) {
-        console.log('matrix', matrix);
-        let arrayOfWords = this.props.reduxState.dictionaryReducer;
-        // let arrayOfWords = ['gas', 'sag', 'broker', 'ripe', 'bleu', 'boy', 'wood', 'garage', 'razor', 'home', 'mark', 'cow', 'kite', 'balloon', 'mouse'];
-        
-        console.log('arrayOfWords', arrayOfWords)
-        let wordsMatch = [];
-        // expect 7 words found from test array
-        for (let i = 0; i < matrix.length; i++) {
-            let matrixString = matrix[i].join('');
-            console.log('matrixString[i]', matrixString[i]);
-            let stringReverse = matrixString.split('').reverse().join('');
-            console.log('stringReverse', stringReverse);
-            console.log('arrayOfWords.length', arrayOfWords.length);
-            console.log('i loop#', i, 'a');
-
-            for (let j = 0; j < arrayOfWords.length; j++) {
-                if (arrayOfWords[j].length < 4) {
-                    console.log('less than 4 characters', arrayOfWords[j])
-                    arrayOfWords.splice(j, 1)
-                    console.log('arrayOfWords', arrayOfWords)
-                }
-                if (matrixString.match(arrayOfWords[j])) {
-                    let match = arrayOfWords[j];
-                    wordsMatch.push(match);
-                    console.log('i loop#', i, 'b');
-                    console.log('j loop#', j, 'c');
-                    console.log('loop match:', matrixString.match(arrayOfWords[j]));
-                    console.log('wordsMatch', wordsMatch);
-                    
-                }
-                if (stringReverse.match(arrayOfWords[j])) {
-                    let match = arrayOfWords[j];
-                    wordsMatch.push(match);
-                    console.log('wordsMatch', wordsMatch);
-                    console.log('i loop#', i, 'd');
-                    console.log('j loop#', j, 'e');
-                    console.log('reverse loop match', stringReverse.match(arrayOfWords[j]));
-                }
-            }
-            console.log('_________________________________________');
-        }
-
-        this.props.dispatch({ type: 'STORE_WORDS', payload: wordsMatch })
-    }// end function wordCheck
-
     render() {
 
-        // let puzzleData = "A T L L F U V D E Y O B Z V D W F B N E D X G H E A N P O R O T V B Y L A L G T D K E A A D O O W D R A H H E L A S P Z A P P E A K H R O F X W L X O W B R G A S O M M B R O K E R M C X G X O U I E O K M Y K W A O E F M R S L S N L R S I I S N P D B C E Q P R I U K U Q T E G R I P E B O Q U I Q S C B P A S D Q P E T X J P S E S B R K R R E U E T T D Z D K L L B J B C B B L E U B I U R F L N H S F H T K R K G H Y A M O J H D N Q A J S Q P L R M U";
         let puzzleData = this.state.puzzleInput;
         let puzzle = puzzleData.split(' ');
 
@@ -182,7 +131,6 @@ class WordFind extends Component {
                 <WordOutput
                     puzzle={puzzleData}
                 />
-
             </p>
         )
     }

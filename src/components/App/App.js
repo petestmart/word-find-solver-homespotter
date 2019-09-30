@@ -6,10 +6,6 @@ import WordFind from '../WordFind/WordFind';
 class App extends Component {
 
   // ========== LIFE CYCLE ========== //
-  componentDidMount() {
-    // this.props.dispatch({ type: 'FETCH_DICTIONARY' });
-  }
-
   render() {
 
     return (
