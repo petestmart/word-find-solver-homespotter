@@ -44,16 +44,19 @@ class WordOutput extends Component {
         )
     });
 
-    
+
 
     render() {
-        
+
         let puzzle = this.props.puzzle.split(' ');
         let testWords;
         let searchTerm = 'A';
         let wordOut
         let wordReducer = this.props.reduxState.wordReducer
         let dictionaryReducer = this.props.reduxState.dictionaryReducer
+        let longWords = [];
+        // Remove words less than 4 characters long
+        // let strippedDictionaryReducer = dictionaryReducer.replace(/(\b(\w{1,4})\b(\s|$))/g, '').split(" ");
         // let PuzzleGrid = this.puzzleGrid(puzzle);
 
         let PuzzleOut = puzzle.map((letter) => {
@@ -61,34 +64,50 @@ class WordOutput extends Component {
                 <li>{letter}</li>
             )
 
-            
+
 
         });
 
-        // if (wordReducer.length !=0) {
-        wordOut = dictionaryReducer.map((word, i) => {
-                return (
-                    <li key={i}>{word}</li>
-                )
-            });
-        // }
-        // else {
-        //     return (
-        //         <div>Found Words:</div>
-        //     )
-        // }
-        
+        if (dictionaryReducer.length != 0) {
+            // console.log('dictionaryReducer', dictionaryReducer)
+            // for (let i=0; i<dictionaryReducer.length; i++){
+            //     for (let j=0; i<dictionaryReducer.length; j++){
+            //         if (dictionaryReducer[j].length > 4) {
+            //             longWords.push(dictionaryReducer[i])
+            //         }
+            //         console.log('longWords', longWords)
+            //     }
+                
+            // }
+            if (dictionaryReducer.length != 0){
+                wordOut = dictionaryReducer.map((word, i) => {
+                    if (word != "" && word != null && word.length > 3){
+                        return (
+                            <li key={i}>{word}</li>
+                        )
+                    }
+                        
+                })
+            }
+            
+        }
+        else {
+            return (
+                <div>Found Words Will Appear Here (May take several minutes after submission)</div>
+            )
+        }
 
-        
+
+
 
         return (
-            
+
 
             <div>
-                
+
                 <ul>{wordOut}</ul>
                 {/* <ul>{this.conditionalFoundNames}</ul> */}
-                
+
             </div>
         )
     }

@@ -5,15 +5,19 @@ require('dotenv').config();
 
 const fs = require('fs');
 let dictionary = fs.readFileSync(__dirname + "/words.txt").toString('utf-8');
+// remove words under 4 characters from dictionary
+// let siftDictionary = dictionary.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split(/\s+/);
 // remove punctuation from dictionary
 let stripDictionary = dictionary.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
 
 // let dictionary = ['gas', 'sag', 'broker', 'ripe', 'bleu', 'boy', 'wood', 'garage', 'razor', 'home', 'mark', 'cow', 'kite', 'balloon', 'mouse']
 // Matching words pushed into the wordsMatch array
 let wordsMatch = []
+// let stripWordsMatch = wordsMatch.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split(/\s+/)
 
 // Turn dictionary into an array of words
-let dictionaryClean = stripDictionary.split("\n")
+let dictionaryClean = stripDictionary.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split("\n")
+// let dictionaryShort = dictionaryClean.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split(/\s+/)
 
 router.post('/', (req, res) => {
     console.log('dictionary.router.post req.body', req.body);{
@@ -27,7 +31,7 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
     console.log('**dictionary.router.get**')
-    (res.send(wordsMatch))
+        (res.send(wordsMatch))
     .catch(() => res.sendStatus(500));
 }) // end router.get/dictionary
 
@@ -67,11 +71,11 @@ function wordCheck(matrix) {
                 console.log('j loop#', j, 'e');
                 console.log('reverse loop match', stringReverse.match(dictionaryClean[j]));
             }
-            // shortRemoval(wordsMatch)
+            
         }
         
     }
-    // shortRemoval(wordsMatch)
+    // shortRemoval()
     console.log('wordsMatch Final:', wordsMatch);
 }
 
