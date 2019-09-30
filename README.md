@@ -38,7 +38,6 @@ Before you get started, make sure you have the following software installed on y
 * Bonus Mode: Only the longest valid word in a sequence of letters:
     * Don't return "broke" and "broker": only "broker"
     * Don’t return “hard” and “wood”; only “hardwood”
-* Remove console logs
 * Clean up layout
     * Position of "Find Words" button is awkwardly placed. Use MUI grid to reposition and make responsive
 * Design
