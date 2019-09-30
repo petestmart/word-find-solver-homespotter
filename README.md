@@ -30,7 +30,7 @@ Before you get started, make sure you have the following software installed on y
 * The solution does print out the list of found words
 
 ### Notes
-As of the this commit, the application will check for words found in any size word find. The words will print to the DOM.  However, at this time the list includes words that are less than 4 characters in length.
+As of the this commit, the application will check for words found in any size word find. The words will print to the DOM.  However, there is a bug where there must be a space between every word in the word find.
 
 ### Next Steps
 * Remove console logs
