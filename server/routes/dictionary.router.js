@@ -5,15 +5,10 @@ require('dotenv').config();
 
 const fs = require('fs');
 let dictionary = fs.readFileSync(__dirname + "/words.txt").toString('utf-8');
-// remove words under 4 characters from dictionary
-// let siftDictionary = dictionary.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split(/\s+/);
 // remove punctuation from dictionary
 let stripDictionary = dictionary.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-
-// let dictionary = ['gas', 'sag', 'broker', 'ripe', 'bleu', 'boy', 'wood', 'garage', 'razor', 'home', 'mark', 'cow', 'kite', 'balloon', 'mouse']
 // Matching words pushed into the wordsMatch array
 let wordsMatch = []
-// let stripWordsMatch = wordsMatch.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split(/\s+/)
 
 // Turn dictionary into an array of words
 let dictionaryClean = stripDictionary.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split("\n")
