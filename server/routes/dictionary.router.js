@@ -16,15 +16,18 @@ let wordsMatch = []
 let dictionaryClean = stripDictionary.split("\n")
 
 router.post('/', (req, res) => {
-    (console.log('dictionary.router.post req.body', req.body))
-    .then(() => res.sendStatus(201))
-    // .catch(() => res.sendStatus(500))
-    wordCheck(req.body);
+    console.log('dictionary.router.post req.body', req.body);{
+        wordCheck(req.body)
+        res.sendStatus(201)
+        // .catch(() => res.sendStatus(500));
+    }
+    
+    
 })
 
 router.get('/', (req, res) => {
     console.log('**dictionary.router.get**')
-    (res.send(dictionary))
+    (res.send(wordsMatch))
     .catch(() => res.sendStatus(500));
 }) // end router.get/dictionary
 

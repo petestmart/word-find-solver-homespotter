@@ -158,7 +158,9 @@ class WordFind extends Component {
         this.props.dispatch({ type: 'STORE_WORDS', payload: wordsMatch })
     }// end function wordCheck
 
-
+    consoleCheck = () => {
+        console.log('wordReducer:', this.props.reduxState.wordReducer)
+    }
 
     render() {
 
@@ -180,7 +182,10 @@ class WordFind extends Component {
                     onClick={() => this.puzzleDisplay(puzzle)}
                     variant="contained"
                 >Find Words</Button>
-
+                <Button
+                    onClick={() => this.consoleCheck()}
+                    variant="contained"
+                >Console Check</Button>
 
                 <WordOutput
                     puzzle={puzzleData}

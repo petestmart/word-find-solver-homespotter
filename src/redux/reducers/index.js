@@ -3,6 +3,7 @@ import dictionaryReducer from './dictionaryReducer';
 
 
 const wordReducer = (state = [], action) => {
+  console.log('wordReducer')
   if (action.type === 'STORE_WORDS') {
     return action.payload;
   }

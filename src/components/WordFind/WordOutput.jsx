@@ -20,7 +20,7 @@ class WordOutput extends Component {
         return (
             (this.props.reduxState.wordReducer.length > 0) ?
 
-                (this.props.reduxState.wordReducer) :
+                (this.wordOut()) :
                 <div>'Loading...'</div>
 
 
@@ -38,12 +38,22 @@ class WordOutput extends Component {
         )
     }
 
+    wordOut = this.props.reduxState.wordReducer.map((word, i) => {
+        return (
+            <li key={i}>{word}</li>
+        )
+    });
+
+    
+
     render() {
         
         let puzzle = this.props.puzzle.split(' ');
         let testWords;
         let searchTerm = 'A';
+        let wordOut
         let wordReducer = this.props.reduxState.wordReducer
+        let dictionaryReducer = this.props.reduxState.dictionaryReducer
         // let PuzzleGrid = this.puzzleGrid(puzzle);
 
         let PuzzleOut = puzzle.map((letter) => {
@@ -55,23 +65,30 @@ class WordOutput extends Component {
 
         });
 
-        let wordOut = wordReducer.map((word, i) => {
-            return (
-                <li key={i}>{word}</li>
-            )
-        });
+        // if (wordReducer.length !=0) {
+        wordOut = dictionaryReducer.map((word, i) => {
+                return (
+                    <li key={i}>{word}</li>
+                )
+            });
+        // }
+        // else {
+        //     return (
+        //         <div>Found Words:</div>
+        //     )
+        // }
+        
 
         
 
         return (
+            
 
             <div>
-
-
-                <ul>{wordOut}</ul>
-                {this.conditionalFoundNames}
                 
-
+                <ul>{wordOut}</ul>
+                {/* <ul>{this.conditionalFoundNames}</ul> */}
+                
             </div>
         )
     }
