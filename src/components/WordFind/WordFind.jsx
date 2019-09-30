@@ -104,8 +104,9 @@ class WordFind extends Component {
             matrix.push(vertMatrix[n])
         }
         this.wordCheck(matrix);
-        this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: ['broker'] })
-        this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: [1,2,3] })
+        this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: matrix })
+        // this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: ['broker'] })
+        // this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: [1,2,3] })
     } // end function puzzleDisplay
 
     
@@ -121,8 +122,8 @@ class WordFind extends Component {
         // expect 7 words found from test array
         for (let i = 0; i < matrix.length; i++) {
             let matrixString = matrix[i].join('');
-            console.log('matrixString[i]', matrixString);
-            let stringReverse = matrixString.split('').reverse().join('')
+            console.log('matrixString[i]', matrixString[i]);
+            let stringReverse = matrixString.split('').reverse().join('');
             console.log('stringReverse', stringReverse);
             console.log('arrayOfWords.length', arrayOfWords.length);
             console.log('i loop#', i, 'a');

@@ -7,7 +7,7 @@ class App extends Component {
 
   // ========== LIFE CYCLE ========== //
   componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_DICTIONARY' });
+    // this.props.dispatch({ type: 'FETCH_DICTIONARY' });
   }
 
   render() {
