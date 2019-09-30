@@ -30,9 +30,7 @@ Before you get started, make sure you have the following software installed on y
 * The solution does print out the list of found words
 
 ### Notes
-I found a method for connecting a full dictionary.  It is currently commented out on the notes.  I found that this method is too large to perform on the front end and will need to move the functionality from the front end to the back end.
-
-As of the time of this submission, the application will only check for words that are hard coded into the server.  I am still working on providing a full dictionary.
+As of the this commit, the application will check for words found in any size word find.  To see the array of results look in the server terminal.  It does not yet print the list of words to the DOM.  The list also includes words that are less than 4 characters in length.
 
 ### Next Steps
 * Remove console logs
