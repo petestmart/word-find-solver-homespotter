@@ -8,14 +8,12 @@ import { connect } from 'react-redux';
 // ========== COMPONENTS ========== //
 import WordOutput from './WordOutput';
 
-
 // ========== STYLES ========== //
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import './WordFind.css'
 
 class WordFind extends Component {
-
     state = {
         puzzleInput: '',
     }
@@ -23,25 +21,21 @@ class WordFind extends Component {
     wordsMatch;
 
     handleChange = (event) => {
-        console.log('Input Word Find', event.target.value);
         let puzzleInput = event.target.value.toLowerCase()
         this.setState({
             puzzleInput: puzzleInput
         })
-        console.log('this.state.puzzleInput', this.state.puzzleInput);
     }
 
     puzzleDisplay = (input) => {
 
         let puzzLength = input.length; // length of puzzle
         let row = Math.floor(Math.sqrt(puzzLength)); // length of row
-        console.log('row', row);
         let column = Math.ceil(Math.sqrt(puzzLength)); // length of column
         let k = 0; // keeps count of the letters as they are looped
         let l = 0; // keeps count of the rows in the matrix and they are looped
         let m = 0; // keeps count of the columns in vertMatrix as letters are added in loops
         let vertMatrix = []; // array to store the columns in the matrix
-        console.log('column', column);
         let matrix = [[]];
 
         if (row * column < puzzLength) {
@@ -51,12 +45,9 @@ class WordFind extends Component {
         // Convert String into a two dimensional matrix
         for (let i = 0; i < row; i++) {
             for (let j = 0; j < column; j++) {
-
                 if (k < puzzLength) {
-
                     input[i] = input[k]
                     input[j] = input[k]
-
                     if (m === column) {
                         console.log('reset');
                         m = 0;
@@ -79,37 +70,21 @@ class WordFind extends Component {
                     else {
                         matrix[l].push(input[k])
                         vertMatrix[m].push(input[k]);
-                        console.log('else matrix[l].push(input[k]): matrix[l]', matrix[l]);
-                        console.log('else vertMatrix[l].push(input[k]): vertMatrix[l]', vertMatrix[l]);
-
                     }
-
-                    console.log('letter is', input[i], 'at (', i, ',', j, '); Check (input[j]:', input[j], ';');
-                    console.log('k', k, ';', 'input[k]', input[k], ';');
-                    console.log('l', l, ';', 'matrix[l]', matrix[l], ';');
-                    console.log('matrix', matrix);
-                    console.log('vertMatrix[l]', vertMatrix[l]);
-                    console.log('vertMatrix', vertMatrix)
-                    console.log('m', m);
                     k++;
                     m++;
-                    console.log('_________________________________')
-                }
-            }
-        }
+                } // end if statement 
+            } // end for j loop
+        } // end for i loop
         
         // adding the array of vertical words to the matrix array
         for (let n = 0; n < vertMatrix.length; n++) {
-
             matrix.push(vertMatrix[n])
         }
         this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: matrix })
     } // end function puzzleDisplay
 
-    
-
     render() {
-
         let puzzleData = this.state.puzzleInput;
         let puzzle = puzzleData.split(' ');
 
@@ -132,9 +107,9 @@ class WordFind extends Component {
                     puzzle={puzzleData}
                 />
             </p>
-        )
-    }
-}
+        ) // end return
+    } // end render
+} // end class
 
 const mapStateToProps = (reduxState) => ({
     reduxState
