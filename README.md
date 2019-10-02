@@ -32,7 +32,7 @@ Before you get started, make sure you have the following software installed on y
 
 ### Bugs To Fix
 * Duplicate words print to DOM
-* Reducer does not clear after submission. Page refresh is required before each new subission to clear the reducer.  When the reducer is not cleared, words that were found in your previous submissions will appear in your current submission.
+* Input field needs to be cleared before each submission
 
 ### Next Steps
 * Bonus Mode: Only the longest valid word in a sequence of letters:
