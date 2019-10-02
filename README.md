@@ -35,6 +35,7 @@ Before you get started, make sure you have the following software installed on y
 * Input field needs to be cleared before each submission
 
 ### Next Steps
+* Remove Console Logs
 * Bonus Mode: Only the longest valid word in a sequence of letters:
     * Don't return "broke" and "broker": only "broker"
     * Don’t return “hard” and “wood”; only “hardwood”
