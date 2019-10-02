@@ -16,6 +16,7 @@ import './WordFind.css'
 class WordFind extends Component {
     state = {
         puzzleInput: '',
+        flip: false
     }
 
     wordsMatch;
@@ -23,7 +24,21 @@ class WordFind extends Component {
     handleChange = (event) => {
         let puzzleInput = event.target.value.toLowerCase()
         this.setState({
-            puzzleInput: puzzleInput
+            puzzleInput: puzzleInput,
+            
+        })
+        
+    }
+
+    // Clears Reducer Upon New Submission
+    clear = (puzzle) => {
+        this.props.dispatch({ type: 'SET_DICTIONARY', payload: ''});
+        this.props.dispatch({ type: 'RESET_DICTIONARY', payload: ''});
+        this.props.dispatch({ type: 'STORE_WORDS', payload: ''});
+        this.puzzleDisplay(puzzle);
+        this.setState({
+            flip: true,
+
         })
     }
 
@@ -87,6 +102,7 @@ class WordFind extends Component {
     render() {
         let puzzleData = this.state.puzzleInput;
         let puzzle = puzzleData.split(' ');
+        let flip = this.state.flip;
 
         return (
             <p>
@@ -99,11 +115,14 @@ class WordFind extends Component {
                     margin="normal"
                 />
                 <Button
-                    onClick={() => this.puzzleDisplay(puzzle)}
+                    onClick={() => this.clear(puzzle)}
+                    // onClick={() => this.puzzleDisplay(puzzle)}
+                    
                     variant="contained"
                 >Find Words</Button>
                 
                 <WordOutput
+                    flip={flip}
                     puzzle={puzzleData}
                 />
             </p>

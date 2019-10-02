@@ -3,13 +3,23 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './WordFind.css';
 
 class WordOutput extends Component {
+
+    state = {
+        flip: false,
+    }
 
     renderWords = () => {
         return (
             this.props.reduxState.wordReducer
         )
+    }
+
+    clear = () => {
+        this.props.dispatch({ type: 'RESET_DICTIONARY', payload: '' });
+        
     }
 
     wordOut = this.props.reduxState.wordReducer.map((word, i) => {
@@ -35,13 +45,18 @@ class WordOutput extends Component {
                     }
                 )
             }
+            
+        }
+        else if (this.props.flip === true){
+            return (
+                <div><img src="images/loading.gif" className="loading" alt="loading" /></div>
+            )
         }
         else {
             return (
-                <div>Found Words Will Appear Here (May take several minutes after submission - depending on size of puzzle)</div>
+                <div><p>Found Words Will Appear Here </p><p>(May take several minutes after submission depending on size of submission)</p></div>
             )
         }
-
         return (
             <div>
                 <ul>{wordOut}</ul>

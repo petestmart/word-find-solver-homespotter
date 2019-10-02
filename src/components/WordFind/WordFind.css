@@ -9,3 +9,7 @@ li {
 Button {
     display: inline-block;
 }
+
+img {
+    width: 150px;
+}

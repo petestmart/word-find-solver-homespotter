@@ -27,7 +27,10 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
     console.log('**dictionary.router.get**')
         (res.send(wordsMatch))
+        
+    .then(() => clear())
     .catch(() => res.sendStatus(500));
+    
 }) // end router.get/dictionary
 
 // check to see if word is in matrix
@@ -42,7 +45,7 @@ function wordCheck(matrix) {
 
         for (let j = 0; j < dictionaryClean.length; j++){
             // remove words from dictionary that are under 4 characters long
-            if (dictionaryClean[j].length < 4){
+            if (dictionaryClean[j] === null || dictionaryClean[j].length < 4  ){
                 console.log('less than 4 characters', dictionaryClean[j])
                 dictionaryClean.splice(j, 1)
                 
@@ -72,6 +75,10 @@ function wordCheck(matrix) {
     }
     // shortRemoval()
     console.log('wordsMatch Final:', wordsMatch);
+}
+
+function clear () {
+    let wordsMatch = []
 }
 
 // removes words from wordsMatch array that are under 4 characters
