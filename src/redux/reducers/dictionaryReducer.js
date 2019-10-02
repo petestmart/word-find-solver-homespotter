@@ -2,10 +2,12 @@
 
 const dictionaryDefaultState = []
 
-const dictionaryReducer = (state = [], action) => {
+const dictionaryReducer = (state = dictionaryDefaultState, action) => {
     console.log('dictionaryReducer', action.payload);
     if (action.type === 'RESET_DICTIONARY'){
+        console.log('Dictionary Reset')
         return dictionaryDefaultState;
+        
     }
     if (action.type === 'SET_DICTIONARY'){
         return action.payload

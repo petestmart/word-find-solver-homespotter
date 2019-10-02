@@ -27,6 +27,11 @@ class WordFind extends Component {
             puzzleInput: puzzleInput,
             
         })
+        if (this.state.puzzleInput === '') {
+            this.setState({
+                flip: false,
+            })
+        }
         
     }
 
@@ -97,12 +102,17 @@ class WordFind extends Component {
             matrix.push(vertMatrix[n])
         }
         this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: matrix })
+        this.setState({
+            puzzleInput: '',
+        })
     } // end function puzzleDisplay
 
     render() {
         let puzzleData = this.state.puzzleInput;
         let puzzle = puzzleData.split(' ');
         let flip = this.state.flip;
+
+        
 
         return (
             <p>

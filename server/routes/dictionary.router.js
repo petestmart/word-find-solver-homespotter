@@ -16,6 +16,7 @@ let dictionaryClean = stripDictionary.replace(/(\b(\W{1,4})\b(\s|$))/g, '').spli
 
 router.post('/', (req, res) => {
     console.log('dictionary.router.post req.body', req.body);{
+        wordsMatch.length = 0
         wordCheck(req.body)
         res.sendStatus(201)
         // .catch(() => res.sendStatus(500));
@@ -27,14 +28,14 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
     console.log('**dictionary.router.get**')
         (res.send(wordsMatch))
-        
-    .then(() => clear())
+
     .catch(() => res.sendStatus(500));
     
 }) // end router.get/dictionary
 
 // check to see if word is in matrix
 function wordCheck(matrix) {
+    
     console.log('dictionary router wordCheck. matrix:', matrix);
     for (let i=0; i<matrix.length; i++){
         let matrixString = matrix[i].join('');
@@ -77,9 +78,7 @@ function wordCheck(matrix) {
     console.log('wordsMatch Final:', wordsMatch);
 }
 
-function clear () {
-    let wordsMatch = []
-}
+
 
 // removes words from wordsMatch array that are under 4 characters
 // function shortRemoval(wordsMatch) {

@@ -19,6 +19,7 @@ class WordOutput extends Component {
 
     clear = () => {
         this.props.dispatch({ type: 'RESET_DICTIONARY', payload: '' });
+        this.props.dispatch({ type: 'SET_DICTIONARY', payload: '' });
         
     }
 
@@ -45,7 +46,7 @@ class WordOutput extends Component {
                     }
                 )
             }
-            
+            // this.clear();
         }
         else if (this.props.flip === true){
             return (
