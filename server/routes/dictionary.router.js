@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    console.log('**dictionary.router.get**')
+    // console.log('**dictionary.router.get**')
         (res.send(wordsMatch))
 
         .catch(() => res.sendStatus(500));
@@ -87,7 +87,7 @@ function subset() {
     console.log('subset start')
     for (let i = 0; i < wordsMatch.length; i++) {
         console.log('wordsMatch[i] subset', wordsMatch[i])
-        if (wordsMatch[i] != '' && wordsMatch[i] != null) {
+        if (wordsMatch.length > 1 && wordsMatch[i] != '' && wordsMatch[i] != null) {
             console.log('wordsMatch[i] subset if statement', wordsMatch[i])
             let k = i + 1;
 
