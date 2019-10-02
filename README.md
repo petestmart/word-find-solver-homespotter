@@ -32,7 +32,7 @@ Before you get started, make sure you have the following software installed on y
 
 ### Bugs To Fix
 * Duplicate words print to DOM
-* Input field needs to be cleared before each submission
+
 
 ### Next Steps
 * Remove Console Logs
