@@ -15,41 +15,42 @@ let dictionaryClean = stripDictionary.replace(/(\b(\W{1,4})\b(\s|$))/g, '').spli
 // let dictionaryShort = dictionaryClean.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split(/\s+/)
 
 router.post('/', (req, res) => {
-    console.log('dictionary.router.post req.body', req.body);{
+    console.log('dictionary.router.post req.body', req.body); {
+        // Empty the wordsMatch array before running the wordCheck function
         wordsMatch.length = 0
         wordCheck(req.body)
         res.sendStatus(201)
         // .catch(() => res.sendStatus(500));
     }
-    
-    
+
+
 })
 
 router.get('/', (req, res) => {
     console.log('**dictionary.router.get**')
         (res.send(wordsMatch))
 
-    .catch(() => res.sendStatus(500));
-    
+        .catch(() => res.sendStatus(500));
+
 }) // end router.get/dictionary
 
 // check to see if word is in matrix
 function wordCheck(matrix) {
-    
+
     console.log('dictionary router wordCheck. matrix:', matrix);
-    for (let i=0; i<matrix.length; i++){
+    for (let i = 0; i < matrix.length; i++) {
         let matrixString = matrix[i].join('');
         console.log('matrixString[i]', matrixString[i])
         let stringReverse = matrixString.split('').reverse().join('');
         console.log('stringReverse', stringReverse);
         console.log('dictionary.length', dictionaryClean.length);
 
-        for (let j = 0; j < dictionaryClean.length; j++){
+        for (let j = 0; j < dictionaryClean.length; j++) {
             // remove words from dictionary that are under 4 characters long
-            if (dictionaryClean[j] === null || dictionaryClean[j].length < 4  ){
+            if (dictionaryClean[j] === null || dictionaryClean[j].length < 4) {
                 console.log('less than 4 characters', dictionaryClean[j])
                 dictionaryClean.splice(j, 1)
-                
+
             }
             // check words written from left to right and up to down
             if (matrixString.match(dictionaryClean[j])) {
@@ -70,15 +71,38 @@ function wordCheck(matrix) {
                 console.log('j loop#', j, 'e');
                 console.log('reverse loop match', stringReverse.match(dictionaryClean[j]));
             }
-            
+
         }
-        
+
     }
     // shortRemoval()
     console.log('wordsMatch Final:', wordsMatch);
+    subset()
 }
 
+// BONUS MODE
+// Check For and Remove Subsets of the Same Word 
+// (ex: "brokers", "broker", & "broke" would only return "brokers")
+function subset() {
+    console.log('subset start')
+    for (let i = 0; i < wordsMatch.length; i++) {
+        console.log('wordsMatch[i] subset', wordsMatch[i])
+        if (wordsMatch[i] != '' && wordsMatch[i] != null) {
+            console.log('wordsMatch[i] subset if statement', wordsMatch[i])
+            let k = i + 1;
 
+            for (let j = 0; j < wordsMatch[i].length; j++) {
+                if (k < wordsMatch[i].length) {
+                    console.log('wordsMatch[j] subset', wordsMatch[j])
+                    console.log('wordsMatch[i][j] subset', wordsMatch[i][j], 'wordsMatch[k][j]', wordsMatch[k][j])
+                    if (wordsMatch[i][j] === wordsMatch[k][j]) {
+                        console.log('MATCH subset i', wordsMatch[i][j], 'subset k,', wordsMatch[k][j]);
+                    }
+                }
+            }
+        }
+    }
+}
 
 // removes words from wordsMatch array that are under 4 characters
 // function shortRemoval(wordsMatch) {
@@ -93,7 +117,7 @@ function wordCheck(matrix) {
 //         }
 //     }
 //     console.log('Final Array of Words', wordsMatch);
-    
+
 // }
 
 module.exports = router;
