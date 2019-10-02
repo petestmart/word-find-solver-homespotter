@@ -37,6 +37,7 @@ class WordFind extends Component {
 
     // Clears Reducer Upon New Submission
     clear = (puzzle) => {
+        console.log('click')
         this.props.dispatch({ type: 'SET_DICTIONARY', payload: ''});
         this.props.dispatch({ type: 'RESET_DICTIONARY', payload: ''});
         this.props.dispatch({ type: 'STORE_WORDS', payload: ''});
@@ -102,9 +103,7 @@ class WordFind extends Component {
             matrix.push(vertMatrix[n])
         }
         this.props.dispatch({ type: 'CHECK_DICTIONARY', payload: matrix })
-        this.setState({
-            puzzleInput: '',
-        })
+        
     } // end function puzzleDisplay
 
     render() {
