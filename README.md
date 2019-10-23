@@ -32,7 +32,7 @@ Before you get started, make sure you have the following software installed on y
 
 ### Bugs To Fix
 * Duplicate words print to DOM
-* Input field needs to be cleared before each submission
+
 
 ### Next Steps
 * Remove Console Logs
@@ -48,3 +48,8 @@ Before you get started, make sure you have the following software installed on y
 * Display user submitted puzzle
     * When user submits a word find, have the word find display on the DOM
     * Highlight words in wordfind when user hovers over the word in the found words list
+* Ways to increase efficiency
+    * Remove short words on server side
+    * DRY (Don't Repeat Yourself)
+        * Consolidate repeated code
+        * Combine functions into one where it makes sense to do so
