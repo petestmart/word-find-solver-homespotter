@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const fs = require('fs');
 let dictionary = fs.readFileSync(__dirname + "/words.txt").toString('utf-8');
-// remove punctuation from dictionary
+// remove punctuation from dictionary (Regular Expressions download)
 let stripDictionary = dictionary.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
 // Matching words pushed into the wordsMatch array
 let wordsMatch = []
@@ -95,8 +95,23 @@ function subset() {
                 if (k < wordsMatch[i].length) {
                     console.log('wordsMatch[j] subset', wordsMatch[j])
                     console.log('wordsMatch[i][j] subset', wordsMatch[i][j], 'wordsMatch[k][j]', wordsMatch[k][j])
-                    if (wordsMatch[i][j] === wordsMatch[k][j]) {
+                    if (wordsMatch[i].length != wordsMatch[k].length && wordsMatch[i][j] === wordsMatch[k][j]) {
+                        // if ( wordsMatch[i][j] === wordsMatch[k][j]){
+
+                        // }
                         console.log('MATCH subset i', wordsMatch[i][j], 'subset k,', wordsMatch[k][j]);
+                        if (wordsMatch[i].length > wordsMatch[k].length){
+                            console.log('long word [i]:', wordsMatch[i])
+                            console.log('short word[k]', wordsMatch[k])
+                        }
+                        if (wordsMatch[i].length < wordsMatch[k].length) {
+                            console.log('long word [k]:', wordsMatch[k])
+                            console.log('short word[i]', wordsMatch[i])
+                        }
+                        if (wordsMatch[i].length === wordsMatch[k].length) {
+                            console.log('equal length word [k]:', wordsMatch[k])
+                            console.log('equal length word[i]', wordsMatch[i])
+                        }
                     }
                 }
             }

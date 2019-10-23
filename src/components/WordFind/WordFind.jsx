@@ -10,6 +10,7 @@ import WordOutput from './WordOutput';
 
 // ========== STYLES ========== //
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import './WordFind.css'
 
@@ -115,25 +116,32 @@ class WordFind extends Component {
 
         return (
             <p>
-                <TextField
-                    onChange={this.handleChange}
-                    id="word-find-input"
-                    label="Enter Word Find"
-                    multiline
-                    rows="4"
-                    margin="normal"
-                />
-                <Button
-                    onClick={() => this.clear(puzzle)}
-                    // onClick={() => this.puzzleDisplay(puzzle)}
-                    
-                    variant="contained"
-                >Find Words</Button>
-                
-                <WordOutput
-                    flip={flip}
-                    puzzle={puzzleData}
-                />
+                <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                        <TextField
+                            onChange={this.handleChange}
+                            id="word-find-input"
+                            label="Enter Word Find"
+                            multiline
+                            rows="4"
+                            margin="normal"
+                        />
+                    </Grid>
+                    <Grid item xs={6} sm={3}>
+                        <Button
+                            onClick={() => this.clear(puzzle)}
+                            // onClick={() => this.puzzleDisplay(puzzle)}
+
+                            variant="contained"
+                        >Find Words</Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <WordOutput
+                            flip={flip}
+                            puzzle={puzzleData}
+                        />
+                    </Grid>
+                </Grid>
             </p>
         ) // end return
     } // end render
