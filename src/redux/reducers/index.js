@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import dictionaryReducer from './dictionaryReducer';
+import userInputReducer from './userInputReducer';
 
 
 const wordReducer = (state = [], action) => {
@@ -21,6 +22,7 @@ const wordReducer = (state = [], action) => {
 const rootReducer = combineReducers({
   wordReducer,
   dictionaryReducer,
+  userInputReducer
 });
 
 export default rootReducer;
