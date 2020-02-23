@@ -119,20 +119,5 @@ function subset() {
     }
 }
 
-// removes words from wordsMatch array that are under 4 characters
-// function shortRemoval(wordsMatch) {
-//     console.log('shortRemoval', wordsMatch)
-//     for (let i = 0; i < wordsMatch.length; i++){
-//         console.log('wordsMatch[i]', wordsMatch[i])
-//         // console.log('wordsMatch[i].length', wordsMatch[i].length)
-//         if (wordsMatch[i] === '' || wordsMatch[i].length < 4){
-//             console.log('less than 4 characters', wordsMatch[i])
-//             wordsMatch.splice(i, 1)
-//             console.log('wordsMatch', wordsMatch)
-//         }
-//     }
-//     console.log('Final Array of Words', wordsMatch);
-
-// }
 
 module.exports = router;
