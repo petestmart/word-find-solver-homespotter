@@ -33,9 +33,9 @@ class WordFind extends Component {
                 flip: false,
             })
         }
-        
+        this.props.dispatch({ type: 'SET_USER_INPUT', payload: puzzleInput });
     }
-
+    
     // Clears Reducer Upon New Submission
     clear = (puzzle) => {
         console.log('click')

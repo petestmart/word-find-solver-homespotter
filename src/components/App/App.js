@@ -1,9 +1,15 @@
+// ========== REACT ========== //
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+// ========== STYLES ========== //
 import './App.css';
-import WordFind from '../WordFind/WordFind';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+
+// ========== COMPONENTS ========== //
+import UserInputDispaly from '../UserInputDisplay/UserInputDispaly';
+import WordFind from '../WordFind/WordFind';
 
 
 class App extends Component {
@@ -21,6 +27,11 @@ class App extends Component {
             <Grid item xs={12} sm={6}>
               <Paper className="WordFind">
                 <WordFind />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Paper className="UserInputDisplay">
+                <UserInputDispaly />
               </Paper>
             </Grid>
           </Grid>

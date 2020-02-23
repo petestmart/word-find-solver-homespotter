@@ -6,12 +6,12 @@ require('dotenv').config();
 const fs = require('fs');
 let dictionary = fs.readFileSync(__dirname + "/words.txt").toString('utf-8');
 // remove punctuation from dictionary (Regular Expressions download)
-let stripDictionary = dictionary.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+let stripDictionary = dictionary.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
 // Matching words pushed into the wordsMatch array
 let wordsMatch = []
 
 // Turn dictionary into an array of words
-let dictionaryClean = stripDictionary.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split("\n")
+let dictionaryClean = stripDictionary.toLowerCase().replace(/(\b(\W{1,4})\b(\s|$))/g, '').split("\n");
 // let dictionaryShort = dictionaryClean.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split(/\s+/)
 
 router.post('/', (req, res) => {

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import dictionaryReducer from './dictionaryReducer';
+import userInputReducer from './userInputReducer';
 
 
 const wordReducer = (state = [], action) => {
@@ -12,8 +13,8 @@ const wordReducer = (state = [], action) => {
   }
 };
 
-// rootReducer is the primary reducer for our entire project
-// It bundles up all of the other reducers so our project can use them.
+// rootReducer is the primary reducer for the entire project
+// It bundles up all of the other reducers so the project can use them.
 // This is imported in index.js as rootSaga
 
 // Lets make a bigger object for our store, with the objects from our reducers.
@@ -21,6 +22,7 @@ const wordReducer = (state = [], action) => {
 const rootReducer = combineReducers({
   wordReducer,
   dictionaryReducer,
+  userInputReducer
 });
 
 export default rootReducer;
