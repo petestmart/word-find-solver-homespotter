@@ -5,15 +5,28 @@ class UserInputDisplay extends Component {
 
     render() {
 
-        let userInputDisplay = this.props.reduxState.UserInputReducer
+        let inputDisplay
+        let userInputReducer = this.props.reduxState.userInputReducer;
 
-        return (
-            <div>
-                UserInputDisplay Goes Here
-                <userInputDisplay />
-            </div>
+        if (userInputReducer.length !== 0){
+            // inputDisplay = userInputReducer.map((input, i) => {
+                return (
+                    // <div key={i}>{input}</div>
+                    <div>You Typed Something</div>
+                )
+            // })
+        }
+        else {
+            return (
+                <div>Input Empty</div>
+            )
+        }
+        // return (
+        //    <div>
+        //         <ul>{inputDisplay}</ul>
+        //    </div> 
 
-        )
+        // )
     }
 }
 
