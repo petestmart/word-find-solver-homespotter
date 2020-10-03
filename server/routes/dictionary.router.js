@@ -9,6 +9,8 @@ let dictionary = fs.readFileSync(__dirname + "/words.txt").toString('utf-8');
 let stripDictionary = dictionary.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
 // Matching words pushed into the wordsMatch array
 let wordsMatch = []
+// Words from wordsMatch with subsets removed pushed into wordsMatchSubset
+let wordsMatchSubset = []
 
 // Turn dictionary into an array of words
 let dictionaryClean = stripDictionary.toLowerCase().replace(/(\b(\W{1,4})\b(\s|$))/g, '').split("\n");
@@ -28,7 +30,7 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
     // console.log('**dictionary.router.get**')
-        (res.send(wordsMatch))
+        (res.send(wordsMatchSubset))
 
         .catch(() => res.sendStatus(500));
 
@@ -91,30 +93,43 @@ function subset() {
             console.log('wordsMatch[i] subset if statement', wordsMatch[i])
             let k = i + 1;
 
-            for (let j = 0; j < wordsMatch[i].length; j++) {
-                if (k < wordsMatch[i].length) {
-                    console.log('wordsMatch[j] subset', wordsMatch[j])
-                    console.log('wordsMatch[i][j] subset', wordsMatch[i][j], 'wordsMatch[k][j]', wordsMatch[k][j])
-                    if (wordsMatch[i].length != wordsMatch[k].length && wordsMatch[i][j] === wordsMatch[k][j]) {
-                        // if ( wordsMatch[i][j] === wordsMatch[k][j]){
-
-                        // }
-                        console.log('MATCH subset i', wordsMatch[i][j], 'subset k,', wordsMatch[k][j]);
-                        if (wordsMatch[i].length > wordsMatch[k].length){
-                            console.log('long word [i]:', wordsMatch[i])
-                            console.log('short word[k]', wordsMatch[k])
-                        }
-                        if (wordsMatch[i].length < wordsMatch[k].length) {
-                            console.log('long word [k]:', wordsMatch[k])
-                            console.log('short word[i]', wordsMatch[i])
-                        }
-                        if (wordsMatch[i].length === wordsMatch[k].length) {
-                            console.log('equal length word [k]:', wordsMatch[k])
-                            console.log('equal length word[i]', wordsMatch[i])
-                        }
-                    }
+            if ((wordsMatch[k] && wordsMatch[i]) && (wordsMatch[k].includes(wordsMatch[i]) || wordsMatch[i].includes(wordsMatch[k]))){
+                console.log('wordsMatch[i] ', wordsMatch[i], ' includes ', wordsMatch[k]);
+                if (wordsMatchSubset.includes(wordsMatch[k])){
+                    wordsMatchSubset.splice(1, wordsMatchSubset.indexOf(wordsMatch[k]), '')
+                }
+                if (wordsMatch[i].length>wordsMatch[k].length){
+                    wordsMatchSubset.push(wordsMatch[i]);
+                }
+                if (wordsMatch[k].length>wordsMatch[i].length){
+                    wordsMatchSubset.push(wordsMatch[k])
                 }
             }
+
+            // for (let j = 0; j < wordsMatch[i].length; j++) {
+            //     if (k < wordsMatch[i].length) {
+            //         console.log('wordsMatch[j] subset', wordsMatch[j])
+            //         console.log('wordsMatch[i][j] subset', wordsMatch[i][j], 'wordsMatch[k][j]', wordsMatch[k][j])
+            //         if (wordsMatch[i].length != wordsMatch[k].length && wordsMatch[i][j] === wordsMatch[k][j]) {
+            //             // if ( wordsMatch[i][j] === wordsMatch[k][j]){
+
+            //             // }
+            //             console.log('MATCH subset i', wordsMatch[i][j], 'subset k,', wordsMatch[k][j]);
+            //             if (wordsMatch[i].length > wordsMatch[k].length){
+            //                 console.log('long word [i]:', wordsMatch[i])
+            //                 console.log('short word[k]', wordsMatch[k])
+            //             }
+            //             if (wordsMatch[i].length < wordsMatch[k].length) {
+            //                 console.log('long word [k]:', wordsMatch[k])
+            //                 console.log('short word[i]', wordsMatch[i])
+            //             }
+            //             if (wordsMatch[i].length === wordsMatch[k].length) {
+            //                 console.log('equal length word [k]:', wordsMatch[k])
+            //                 console.log('equal length word[i]', wordsMatch[i])
+            //             }
+            //         }
+            //     }
+            // }
         }
     }
 }

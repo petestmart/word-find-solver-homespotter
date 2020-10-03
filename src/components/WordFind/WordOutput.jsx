@@ -50,7 +50,7 @@ class WordOutput extends Component {
         }
         else if (this.props.flip === true) {
             return (
-                <div><img src="images/loading.gif" className="loading" alt="loading" /></div>
+                <div><p><img src="images/loading.gif" className="loading" alt="loading" /></p><p>(May take several minutes after submission depending on size of submission)</p></div>
             )
         }
         else {
