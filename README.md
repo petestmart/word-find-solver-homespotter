@@ -23,6 +23,10 @@ Before you get started, make sure you have the following software installed on y
 * Run `npm run client`
 * Navigate to `localhost:3000`
 
+### Screen Shot
+
+![screenshot](wireframes/word_find_solver_screenshot.png)
+
 ## Completed Requirements
 * Will find all 4 letter or longer words
 * Will find words in any direction: up, down, left, or right (not diagonal)
