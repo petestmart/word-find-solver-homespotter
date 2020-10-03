@@ -1,4 +1,6 @@
-# Word Find Solver - HomeSpotter
+# Word Find Solver
+
+This Word Find Solver will take in a Word Find and pick out words that are at least four letters in length.  Words may go up, down, left, or right.  
 
 ## Built With
 
