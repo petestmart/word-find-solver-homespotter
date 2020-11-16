@@ -34,6 +34,7 @@ Before you get started, make sure you have the following software installed on y
 * Will find words in any direction: up, down, left, or right (not diagonal)
 * Will handle arbitrarily sized puzzle inputs
 * The solution does print out the list of found words
+* The solution removes words that are subsets (Won't return "broke" and "broker": only "broker")
 
 
 ### Bugs To Fix
@@ -42,11 +43,8 @@ Before you get started, make sure you have the following software installed on y
 
 ### Next Steps
 * Remove Console Logs
-* Bonus Mode: Only the longest valid word in a sequence of letters:
-    * Don't return "broke" and "broker": only "broker"
-    * Don’t return “hard” and “wood”; only “hardwood”
 * Clean up layout
-    * Position of "Find Words" button is awkwardly placed. Use MUI grid to reposition and make responsive
+    * Display solution in more than one column to prevent user needing to scroll
 * Design
     * Color Buttons
     * Add color to Page
@@ -55,7 +53,7 @@ Before you get started, make sure you have the following software installed on y
     * When user submits a word find, have the word find display on the DOM
     * Highlight words in wordfind when user hovers over the word in the found words list
 * Ways to increase efficiency
-    * Remove short words on server side
+    * ~~Remove short words on server side~~
     * DRY (Don't Repeat Yourself)
         * Consolidate repeated code
         * Combine functions into one where it makes sense to do so
