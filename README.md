@@ -1,4 +1,6 @@
-# Word Find Solver - HomeSpotter
+# Word Find Solver
+
+This Word Find Solver will take in a Word Find and pick out words that are at least four letters in length.  Words may go up, down, left, or right.  
 
 ## Built With
 
@@ -22,6 +24,10 @@ Before you get started, make sure you have the following software installed on y
 * Run `npm run server`
 * Run `npm run client`
 * Navigate to `localhost:3000`
+
+### Screen Shot
+
+![screenshot](wireframes/word_find_solver_screenshot.png)
 
 ## Completed Requirements
 * Will find all 4 letter or longer words

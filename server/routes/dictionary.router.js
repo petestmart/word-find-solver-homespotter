@@ -6,12 +6,14 @@ require('dotenv').config();
 const fs = require('fs');
 let dictionary = fs.readFileSync(__dirname + "/words.txt").toString('utf-8');
 // remove punctuation from dictionary (Regular Expressions download)
-let stripDictionary = dictionary.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+let stripDictionary = dictionary.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
 // Matching words pushed into the wordsMatch array
 let wordsMatch = []
+// Words from wordsMatch with subsets removed pushed into wordsMatchSubset
+let wordsMatchSubset = []
 
 // Turn dictionary into an array of words
-let dictionaryClean = stripDictionary.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split("\n")
+let dictionaryClean = stripDictionary.toLowerCase().replace(/(\b(\W{1,4})\b(\s|$))/g, '').split("\n");
 // let dictionaryShort = dictionaryClean.replace(/(\b(\W{1,4})\b(\s|$))/g, '').split(/\s+/)
 
 router.post('/', (req, res) => {
@@ -93,6 +95,31 @@ function subset() {
                     console.log(wordsMatch[i] + ' is longer. The word ' + wordsMatch[j] + ' has been removed');
                 }
             }
+
+            // for (let j = 0; j < wordsMatch[i].length; j++) {
+            //     if (k < wordsMatch[i].length) {
+            //         console.log('wordsMatch[j] subset', wordsMatch[j])
+            //         console.log('wordsMatch[i][j] subset', wordsMatch[i][j], 'wordsMatch[k][j]', wordsMatch[k][j])
+            //         if (wordsMatch[i].length != wordsMatch[k].length && wordsMatch[i][j] === wordsMatch[k][j]) {
+            //             // if ( wordsMatch[i][j] === wordsMatch[k][j]){
+
+            //             // }
+            //             console.log('MATCH subset i', wordsMatch[i][j], 'subset k,', wordsMatch[k][j]);
+            //             if (wordsMatch[i].length > wordsMatch[k].length){
+            //                 console.log('long word [i]:', wordsMatch[i])
+            //                 console.log('short word[k]', wordsMatch[k])
+            //             }
+            //             if (wordsMatch[i].length < wordsMatch[k].length) {
+            //                 console.log('long word [k]:', wordsMatch[k])
+            //                 console.log('short word[i]', wordsMatch[i])
+            //             }
+            //             if (wordsMatch[i].length === wordsMatch[k].length) {
+            //                 console.log('equal length word [k]:', wordsMatch[k])
+            //                 console.log('equal length word[i]', wordsMatch[i])
+            //             }
+            //         }
+            //     }
+            // }
         }
     }
     // console.log('subset start')
@@ -130,20 +157,5 @@ function subset() {
     // }
 }
 
-// removes words from wordsMatch array that are under 4 characters
-// function shortRemoval(wordsMatch) {
-//     console.log('shortRemoval', wordsMatch)
-//     for (let i = 0; i < wordsMatch.length; i++){
-//         console.log('wordsMatch[i]', wordsMatch[i])
-//         // console.log('wordsMatch[i].length', wordsMatch[i].length)
-//         if (wordsMatch[i] === '' || wordsMatch[i].length < 4){
-//             console.log('less than 4 characters', wordsMatch[i])
-//             wordsMatch.splice(i, 1)
-//             console.log('wordsMatch', wordsMatch)
-//         }
-//     }
-//     console.log('Final Array of Words', wordsMatch);
-
-// }
 
 module.exports = router;
