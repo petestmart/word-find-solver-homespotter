@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
 // ========== COMPONENTS ========== //
-import UserInputDispaly from '../UserInputDisplay/UserInputDispaly';
+import UserInputDisplay from '../UserInputDisplay/UserInputDisplay';
 import WordFind from '../WordFind/WordFind';
 
 
@@ -29,11 +29,11 @@ class App extends Component {
                 <WordFind />
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <Paper className="UserInputDisplay">
-                <UserInputDispaly />
+                <UserInputDisplay />
               </Paper>
-            </Grid>
+            </Grid> */}
           </Grid>
         </body>
       </div>

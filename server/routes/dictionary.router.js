@@ -71,9 +71,7 @@ function wordCheck(matrix) {
                 console.log('j loop#', j, 'e');
                 console.log('reverse loop match', stringReverse.match(dictionaryClean[j]));
             }
-
         }
-
     }
     // shortRemoval()
     console.log('wordsMatch Final:', wordsMatch);
@@ -85,38 +83,51 @@ function wordCheck(matrix) {
 // (ex: "brokers", "broker", & "broke" would only return "brokers")
 function subset() {
     console.log('subset start')
-    for (let i = 0; i < wordsMatch.length; i++) {
-        console.log('wordsMatch[i] subset', wordsMatch[i])
-        if (wordsMatch.length > 1 && wordsMatch[i] != '' && wordsMatch[i] != null) {
-            console.log('wordsMatch[i] subset if statement', wordsMatch[i])
-            let k = i + 1;
-
-            for (let j = 0; j < wordsMatch[i].length; j++) {
-                if (k < wordsMatch[i].length) {
-                    console.log('wordsMatch[j] subset', wordsMatch[j])
-                    console.log('wordsMatch[i][j] subset', wordsMatch[i][j], 'wordsMatch[k][j]', wordsMatch[k][j])
-                    if (wordsMatch[i].length != wordsMatch[k].length && wordsMatch[i][j] === wordsMatch[k][j]) {
-                        // if ( wordsMatch[i][j] === wordsMatch[k][j]){
-
-                        // }
-                        console.log('MATCH subset i', wordsMatch[i][j], 'subset k,', wordsMatch[k][j]);
-                        if (wordsMatch[i].length > wordsMatch[k].length){
-                            console.log('long word [i]:', wordsMatch[i])
-                            console.log('short word[k]', wordsMatch[k])
-                        }
-                        if (wordsMatch[i].length < wordsMatch[k].length) {
-                            console.log('long word [k]:', wordsMatch[k])
-                            console.log('short word[i]', wordsMatch[i])
-                        }
-                        if (wordsMatch[i].length === wordsMatch[k].length) {
-                            console.log('equal length word [k]:', wordsMatch[k])
-                            console.log('equal length word[i]', wordsMatch[i])
-                        }
-                    }
+    for (let i=0; i<wordsMatch.length; i++){
+        // console.log('for i loop subset pass');
+        if (wordsMatch.length > 1 && wordsMatch[i] != '' && wordsMatch[i] != null && wordsMatch[i] !=undefined && wordsMatch[i] !='undefined') {
+            for (let j=1; j<wordsMatch.length; j++){
+                console.log('for j loop subset pass ' + wordsMatch[j]);
+                if(wordsMatch[j] && (wordsMatch[i].includes(wordsMatch[j])) && (wordsMatch[i].length>wordsMatch[j].length)){
+                    delete wordsMatch[j];
+                    console.log(wordsMatch[i] + ' is longer. The word ' + wordsMatch[j] + ' has been removed');
                 }
             }
         }
     }
+    // console.log('subset start')
+    // for (let i = 0; i < wordsMatch.length; i++) {
+    //     console.log('wordsMatch[i] subset', wordsMatch[i])
+    //     if (wordsMatch.length > 1 && wordsMatch[i] != '' && wordsMatch[i] != null) {
+    //         console.log('wordsMatch[i] subset if statement', wordsMatch[i])
+    //         let k = i + 1;
+
+    //         for (let j = 0; j < wordsMatch[i].length; j++) {
+    //             if (k < wordsMatch[i].length) {
+    //                 console.log('wordsMatch[j] subset', wordsMatch[j])
+    //                 console.log('wordsMatch[i][j] subset', wordsMatch[i][j], 'wordsMatch[k][j]', wordsMatch[k][j])
+    //                 if (wordsMatch[i].length != wordsMatch[k].length && wordsMatch[i][j] === wordsMatch[k][j]) {
+    //                     // if ( wordsMatch[i][j] === wordsMatch[k][j]){
+
+    //                     // }
+    //                     console.log('MATCH subset i', wordsMatch[i][j], 'subset k,', wordsMatch[k][j]);
+    //                     if (wordsMatch[i].length > wordsMatch[k].length){
+    //                         console.log('long word [i]:', wordsMatch[i])
+    //                         console.log('short word[k]', wordsMatch[k])
+    //                     }
+    //                     if (wordsMatch[i].length < wordsMatch[k].length) {
+    //                         console.log('long word [k]:', wordsMatch[k])
+    //                         console.log('short word[i]', wordsMatch[i])
+    //                     }
+    //                     if (wordsMatch[i].length === wordsMatch[k].length) {
+    //                         console.log('equal length word [k]:', wordsMatch[k])
+    //                         console.log('equal length word[i]', wordsMatch[i])
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 // removes words from wordsMatch array that are under 4 characters
